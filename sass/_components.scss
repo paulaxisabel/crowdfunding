@@ -1,0 +1,245 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(rgba($color-black, 0.5), transparent);
+  z-index: 10;
+  transition: all 0.3s;
+  visibility: visible;
+
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+  }
+
+  &--modal {
+    transition: all 0.6s ease;
+    z-index: 50;
+    background-image: linear-gradient(
+      rgba($color-black, 0.5),
+      rgba($color-black, 0.5)
+    );
+  }
+}
+
+// Buttons
+.btn {
+  color: $color-white;
+  font-family: inherit;
+  font-weight: 700;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2.5rem;
+  transition: all 0.3s;
+  letter-spacing: 0.03125rem;
+
+  &--menu {
+    @media only screen and (min-width: 500px) {
+      display: none;
+    }
+  }
+
+  &--teal {
+    background-color: $color-teal;
+
+    &:hover,
+    &:focus {
+      background-color: $color-teal-dark;
+    }
+  }
+
+  &--primary {
+    font-size: 0.9375rem;
+    padding: 1.125rem 1.25rem;
+    max-width: 13.375rem;
+
+    @media only screen and (min-width: 600px) {
+      padding: 1.15625rem 1.25rem;
+      max-width: 12.625rem;
+    }
+  }
+
+  &--reward {
+    font-size: 0.8125rem;
+    padding: 1rem 0;
+    width: 9.875rem;
+
+    &:disabled {
+      background-color: $color-gray;
+      cursor: default;
+    }
+  }
+
+  &--pledge,
+  &--success {
+    font-size: 0.8125rem;
+    padding: 1rem 2.0625rem;
+  }
+
+  &--success {
+    margin-top: 0.5rem;
+  }
+
+  &--modal-form {
+    font-size: 0.8125rem;
+    padding: 1rem 1.75rem;
+  }
+
+  &--close-modal {
+    @media only screen and (min-width: 700px) {
+      position: absolute;
+      right: 1.875rem;
+      top: 1.875rem;
+    }
+  }
+}
+
+// Bookmark
+.bookmark {
+  &:hover,
+  &:focus {
+    & * circle {
+      fill: $color-gray;
+    }
+
+    & * path {
+      fill: $color-white;
+    }
+  }
+
+  @media only screen and (min-width: 525px) {
+    border-radius: 2.5rem;
+    background-color: $color-slider-bg;
+    color: $color-gray;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    min-width: 10.75rem;
+    grid-gap: 1rem;
+    letter-spacing: 0.03125rem;
+  }
+
+  &__icon {
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 1;
+
+    & * circle,
+    & * path {
+      transition: all 0.3s;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @media only screen and (min-width: 525px) {
+      display: inline;
+      font-size: 0.9375rem;
+      transition: all 0.5s ease;
+      position: relative;
+      z-index: 0;
+
+      &--active {
+        color: $color-teal-dark;
+        visibility: hidden;
+        opacity: 0;
+        padding-right: 0.5rem;
+        transition: all 0.35s ease;
+      }
+    }
+  }
+
+  &--active {
+    & * circle {
+      fill: $color-teal-dark;
+    }
+
+    & * path {
+      fill: $color-white;
+    }
+
+    &:hover,
+    &:focus {
+      & * circle {
+        fill: $color-teal;
+      }
+    }
+
+    @media only screen and (min-width: 525px) {
+      background-color: $color-bookmark-active;
+
+      .bookmark__icon {
+        transition: all 0.5s ease;
+        transform: translateX(8.375rem);
+      }
+
+      .bookmark__text {
+        transform: translateX(-2.75rem);
+        color: $color-teal-dark;
+      }
+
+      // "ed" span
+      .bookmark__text--active {
+        padding-right: 1.625rem;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s ease;
+        transition-delay: 0.1s;
+      }
+    }
+  }
+}
+
+// Rewards (About Section)
+.reward {
+  background-color: $color-white;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid $color-pledge-border;
+  padding: 1.4375rem 1.375rem;
+  width: 100%;
+  display: grid;
+  grid-gap: 1.4375rem;
+
+  @media only screen and (min-width: 700px) {
+    padding: 2.25rem 1.875rem 1.875rem;
+  }
+
+  &--unavailable {
+    filter: opacity(0.45);
+    cursor: default;
+  }
+
+  &__header {
+    display: grid;
+    grid-gap: 0.25rem;
+
+    @media only screen and (min-width: 525px) {
+      grid-auto-flow: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__footer {
+    display: grid;
+    justify-content: start;
+    grid-gap: 1.5rem;
+
+    @media only screen and (min-width: 525px) {
+      grid-auto-flow: column;
+      justify-content: space-between;
+    }
+
+    &-text {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: start;
+      grid-gap: 0.5625rem;
+    }
+  }
+}
